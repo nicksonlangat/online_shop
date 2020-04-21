@@ -1,0 +1,39 @@
+{% extends 'shop/base.html' %}
+
+    
+{% block content %}
+          <div class="container-fluid">
+      <div class="row" style="margin-top: 10%">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post">
+              <div class="row">
+                  {%if product_list%} 
+                  {% for product in product_list%}
+                      <div class="col-md-4">
+                        
+                            <div class="caption">
+                                <h6 class="text-center">
+                                    <a  class="btn btn-dark btn-sm mt-1 mb-1"  href="{{ product.category.get_absolute_url }}">{{ product.category }}</a><br>
+                                    <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                                    
+                                </h6>
+                                <p class="text-center">Kshs. {{ product.price }}</p>
+                                <p class="text-center"> {{ product.stock }} More Units Available. </p><hr style="border-top: 1px solid #006666" >
+                            </div>
+                        </div>
+                      </div>
+                  {% endfor %}
+                  {%else %} 
+         <p class ="alert alert-danger" >Sorry! But your search returned no results! Retry</p>
+                  {% endif %}
+                  
+              </div>
+
+
+          </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'shop/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for product in filter.qs %}
+    <li>{{ product.name}} </li>
+  {% endfor %}
+  </ul>
+{% endblock %}

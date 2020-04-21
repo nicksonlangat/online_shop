@@ -1,0 +1,27 @@
+{% extends 'shop/base.html' %}
+{% block title %}
+    {% if category %}{{ category.name }}  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Categories</h4>
+            <ol class="list-unstyled">
+              <li {% if not category %} class="active"{% endif %}><a class="btn btn-dark btn-sm mt-1 mb-1"   href="{% url 'shop:product_list' %}">All</a></li>
+            {% for c in categories %}
+
+              <li {% if category.slug == c.slug %} class="active"{% endif %}>
+                  <a class="btn btn-dark btn-sm mt-1 mb-1"  href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+              </li>
+            {% endfor %}
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+{% endblock %}
